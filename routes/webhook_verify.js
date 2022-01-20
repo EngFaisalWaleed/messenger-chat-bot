@@ -3,8 +3,10 @@ const processMessage = require('../processes/messages');
 
 module.exports = function(app, chalk){
   app.get('/webhook', function(req, res) {
+     console.log('req.query', req.query['hub.verify_token']);
+     console.log('hub.verify_token', req.query['hub.verify_token']);
+     console.log('process.env.VERIFY_TOKEN', process.env.VERIFY_TOKEN);
     if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN){
-       console.log('webhook verified');
        res.status(200).send(req.query['hub.challenge']);
     } else {
         console.error('verification failed. Token mismatch.');

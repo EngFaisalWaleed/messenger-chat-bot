@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json()); 
 
 // app routes
-require('./routes/webhookVerify')(app);
+require('./routes/webhook_verify')(app);
 
 app.listen(app.get('port'), function() {
   const url = 'http://localhost:' + app.set('port');
